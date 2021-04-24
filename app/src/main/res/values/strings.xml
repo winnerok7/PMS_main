@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="about">Буцев Богдан\nГрупа ІВ-81\nЗК ІВ-8107</string>
+    <string name="graph">Graph</string>
+    <string name="diagram">Diagram</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="drawing">Drawing</string>
+</resources>
