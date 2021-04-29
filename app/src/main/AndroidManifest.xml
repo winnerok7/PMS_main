@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name="ua.kpi.comsys.iv8107.ThirdActivity" />
         <activity android:name="ua.kpi.comsys.iv8107.SecondActivity" />
         <activity android:name="ua.kpi.comsys.iv8107.MainActivity">
             <intent-filter>

@@ -12,7 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import java.lang.Math;
 
-
 public class DrawingView extends View {
     private String string = "";
     private int color = Color.GREEN;
