@@ -1,6 +1,5 @@
 package ua.kpi.comsys.iv8107;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,7 +10,7 @@ import com.google.android.material.tabs.TabLayout;
 public class SecondActivity extends AppCompatActivity {
 
     @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState){
+    protected void onSaveInstanceState(Bundle outState){
         super.onSaveInstanceState(outState);
         TabLayout tabsDrawing = findViewById(R.id.tabsDraw);
         outState.putInt("tabsDrawingState", tabsDrawing.getSelectedTabPosition());

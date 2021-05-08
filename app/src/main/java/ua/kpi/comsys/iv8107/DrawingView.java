@@ -12,19 +12,23 @@ import android.util.AttributeSet;
 import android.view.View;
 import java.lang.Math;
 
+
 public class DrawingView extends View {
     private String string = "";
     private int color = Color.GREEN;
     private float dimension = 0;
     private int numDrawing = 0;
-    private TextPaint textPaint;
+    private Drawable ExampleDrawable;
 
+
+    private TextPaint textPaint;
 
     private final Paint colorGr = new Paint();
     private final Paint colorBlck = new Paint();
     private final Paint colorCn = new Paint();
     private final Paint colorPrpl = new Paint();
     private final Paint colorYlw = new Paint();
+
 
     public DrawingView(Context context) {
         super(context);
@@ -46,17 +50,21 @@ public class DrawingView extends View {
         final TypedArray a = getContext().obtainStyledAttributes(
                 attrs, R.styleable.DrawingView, defStyle, 0);
 
-        string = a.getString(R.styleable.DrawingView_exampleString);
-        color = a.getColor(R.styleable.DrawingView_exampleColor,
+        string = a.getString(
+                R.styleable.DrawingView_exampleString);
+        color = a.getColor(
+                R.styleable.DrawingView_exampleColor,
                 color);
-
+        // Use getDimensionPixelSize or getDimensionPixelOffset when dealing with
+        // values that should fall on pixel boundaries.
         dimension = a.getDimension(
                 R.styleable.DrawingView_exampleDimension,
                 dimension);
 
         if (a.hasValue(R.styleable.DrawingView_exampleDrawable)) {
-            Drawable mExampleDrawable = a.getDrawable(R.styleable.DrawingView_exampleDrawable);
-            mExampleDrawable.setCallback(this);
+            ExampleDrawable = a.getDrawable(
+                    R.styleable.DrawingView_exampleDrawable);
+            ExampleDrawable.setCallback(this);
         }
 
         colorBlck.setColor(Color.BLACK);
@@ -70,10 +78,12 @@ public class DrawingView extends View {
 
         a.recycle();
 
+        // Set up a default TextPaint object
         textPaint = new TextPaint();
         textPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextAlign(Paint.Align.LEFT);
 
+        // Update TextPaint and text measurements from attributes
         TextPaint();
     }
 
@@ -89,7 +99,8 @@ public class DrawingView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
+        // TODO: consider storing these as member variables to reduce
+        // allocations per draw cycle.
         int pdnLft = getPaddingLeft();
         int pdnTop = getPaddingTop();
         int pdnRght = getPaddingRight();
@@ -100,20 +111,22 @@ public class DrawingView extends View {
 
         if (numDrawing == 0) {
             int n = 50;
-            float x = 0;
-            float y = 0;
+            float xPast = 0;
+            float yPast = 0;
+            colorPrpl.setStyle(Paint.Style.FILL);
+            colorPrpl.setStrokeWidth(5);
             for (int i = 0; i < n; i++) {
-                float y_new = contentHeight -
+                float y = contentHeight -
                         (float) (Math.cos(Math.PI * (2 * (double) i / (n - 1) - 1)) + 1 + 1)
                                 * contentHeight / 4 + pdnTop;
-                float x_new = (float) i / (n - 1) * contentWidth + pdnLft;
+                float x = (float) i / (n - 1) * contentWidth + pdnLft;
                 if (i == 0) {
-                    x = x_new;
-                    y = y_new;
+                    xPast = x;
+                    yPast = y;
                 } else {
-                    canvas.drawLine(x, y, x_new, y_new, colorPrpl);
-                    x = x_new;
-                    y = y_new;
+                    canvas.drawLine(xPast, yPast, x, y, colorPrpl);
+                    xPast = x;
+                    yPast = y;
                 }
             }
 
@@ -140,25 +153,30 @@ public class DrawingView extends View {
                     (float) contentHeight / 2 + pdnTop,
                     contentWidth + pdnLft + pdnRght - 50,
                     (float) contentHeight / 2 + pdnTop + 25, colorBlck);
-        } else if (numDrawing == 1){
+        } else if (numDrawing == 1) {
             int size = Math.min(contentWidth, contentHeight);
-            int xFirst = pdnLft + (contentWidth - size) / 2;
-            int yFirst = pdnTop + (contentHeight - size) / 2;
-            RectF oval = new RectF(xFirst, yFirst, xFirst + size, yFirst + size);
-            canvas.drawArc(oval, 0F, 162F, true, colorCn);
-            canvas.drawArc(oval, 162F, 18F, true, colorPrpl);
-            canvas.drawArc(oval, 180F, 90F, true, colorYlw);
-            canvas.drawArc(oval, 270F, 90F, true, colorGr);
+            int xStart = pdnLft + (contentWidth - size) / 2;
+            int yStart = pdnTop + (contentHeight - size) / 2;
+            RectF oval = new RectF(xStart, yStart, xStart + size, yStart + size);
+            colorCn.setStyle(Paint.Style.STROKE);
+            colorPrpl.setStyle(Paint.Style.STROKE);
+            colorYlw.setStyle(Paint.Style.STROKE);
+            colorGr.setStyle(Paint.Style.STROKE);
+            colorCn.setStrokeWidth(size / 10);
+            colorPrpl.setStrokeWidth(size / 10);
+            colorYlw.setStrokeWidth(size / 10);
+            colorGr.setStrokeWidth(size / 10);
+            canvas.drawArc(oval, 0F, 162F, false, colorCn);
+            canvas.drawArc(oval, 162F, 18F, false, colorPrpl);
+            canvas.drawArc(oval, 180F, 90F, false, colorYlw);
+            canvas.drawArc(oval, 270F, 90F, false, colorGr);
         }
     }
 
     public void setNumberOfDrawing(int numberOfDrawing) {
         numDrawing = numberOfDrawing;
     }
-
     public int getNumberOfDrawing() {
         return numDrawing;
     }
-
-
 }
