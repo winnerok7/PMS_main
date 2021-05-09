@@ -29,5 +29,6 @@
     <string name="publisher">Publisher: Addison-Wesley</string>
     <string name="subtitle_example">Subtitle: Understanding the Advanced Features of the iOS SDK</string>
     <string name="title_example">Title: iOS Components and Frameworks</string>
+    <string name="gallery">Gallery</string>
     <string name="todo">TODO</string>
 </resources>

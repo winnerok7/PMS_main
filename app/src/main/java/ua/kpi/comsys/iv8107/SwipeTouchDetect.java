@@ -7,11 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-    public class SwipeDelete implements OnTouchListener {
+    public class SwipeTouchDetect implements OnTouchListener {
 
         private final GestureDetector gestureDetector;
 
-        public SwipeDelete(Context ctx){
+        public SwipeTouchDetect(Context ctx){
             gestureDetector = new GestureDetector(ctx, new GestureListener());
         }
 

@@ -44,6 +44,9 @@ public class ThirdActivity extends AppCompatActivity {
                 } else if (tab.getPosition() == 1) {
                     Intent intent = new Intent(ThirdActivity.this, SecondActivity.class);
                     startActivity(intent);
+                } else if (tab.getPosition() == 3) {
+                    Intent intent = new Intent(ThirdActivity.this, FourthActivity.class);
+                    startActivity(intent);
                 }
             }
 
@@ -136,7 +139,7 @@ public class ThirdActivity extends AppCompatActivity {
             TableRow tblRow = tblRows[i];
             Book books = booksArrayFiltered.get(i);
             if (filesOfBook.contains(isbn13 + ".txt")) {
-                tblRows[i].setOnTouchListener(new SwipeDelete(ThirdActivity.this) {
+                tblRows[i].setOnTouchListener(new SwipeTouchDetect(ThirdActivity.this) {
                     @Override
                     public void onClick() {
                         Intent intent = new Intent(ThirdActivity.this, InfoOfBook.class);
@@ -150,7 +153,7 @@ public class ThirdActivity extends AppCompatActivity {
                     }
                 });
             } else {
-                tblRows[i].setOnTouchListener(new SwipeDelete(ThirdActivity.this) {
+                tblRows[i].setOnTouchListener(new SwipeTouchDetect(ThirdActivity.this) {
                     @Override
                     public void onSwipeLeft() {
                         swipeLeftMethod(table, tblRow, booksArrayUnfiltered, booksArrayFiltered, books);

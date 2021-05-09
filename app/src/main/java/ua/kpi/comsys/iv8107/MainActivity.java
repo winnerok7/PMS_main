@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
                 } else if (tab.getPosition() == 2) {
                     Intent intent = new Intent(MainActivity.this, ThirdActivity.class);
                     startActivity(intent);
+                } else if (tab.getPosition() == 3) {
+                    Intent intent = new Intent(MainActivity.this, FourthActivity.class);
+                    startActivity(intent);
                 }
             }
             @Override

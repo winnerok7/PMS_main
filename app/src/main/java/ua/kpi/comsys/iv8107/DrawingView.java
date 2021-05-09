@@ -18,17 +18,17 @@ public class DrawingView extends View {
     private int color = Color.GREEN;
     private float dimension = 0;
     private int numDrawing = 0;
-    private Drawable ExampleDrawable;
+    private Drawable exampleDrawable;
 
 
     private TextPaint textPaint;
+
 
     private final Paint colorGr = new Paint();
     private final Paint colorBlck = new Paint();
     private final Paint colorCn = new Paint();
     private final Paint colorPrpl = new Paint();
     private final Paint colorYlw = new Paint();
-
 
     public DrawingView(Context context) {
         super(context);
@@ -62,9 +62,9 @@ public class DrawingView extends View {
                 dimension);
 
         if (a.hasValue(R.styleable.DrawingView_exampleDrawable)) {
-            ExampleDrawable = a.getDrawable(
+            exampleDrawable = a.getDrawable(
                     R.styleable.DrawingView_exampleDrawable);
-            ExampleDrawable.setCallback(this);
+            exampleDrawable.setCallback(this);
         }
 
         colorBlck.setColor(Color.BLACK);
@@ -153,7 +153,7 @@ public class DrawingView extends View {
                     (float) contentHeight / 2 + pdnTop,
                     contentWidth + pdnLft + pdnRght - 50,
                     (float) contentHeight / 2 + pdnTop + 25, colorBlck);
-        } else if (numDrawing == 1) {
+        } else if (numDrawing == 1){
             int size = Math.min(contentWidth, contentHeight);
             int xStart = pdnLft + (contentWidth - size) / 2;
             int yStart = pdnTop + (contentHeight - size) / 2;
@@ -170,13 +170,17 @@ public class DrawingView extends View {
             canvas.drawArc(oval, 162F, 18F, false, colorPrpl);
             canvas.drawArc(oval, 180F, 90F, false, colorYlw);
             canvas.drawArc(oval, 270F, 90F, false, colorGr);
-        }
+          }
     }
+
+
 
     public void setNumberOfDrawing(int numberOfDrawing) {
         numDrawing = numberOfDrawing;
     }
+
     public int getNumberOfDrawing() {
         return numDrawing;
     }
+
 }

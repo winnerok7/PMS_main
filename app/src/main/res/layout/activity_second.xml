@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/outline_all_inbox_24"
-            android:text="@string/main_menu"  />
+            android:text="@string/main_menu" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab2"
@@ -34,6 +34,13 @@
             android:layout_height="wrap_content"
             android:icon="@drawable/outline_all_inbox_24"
             android:text="@string/book" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/outline_all_inbox_24"
+            android:text="@string/gallery" />
 
     </com.google.android.material.tabs.TabLayout>
 

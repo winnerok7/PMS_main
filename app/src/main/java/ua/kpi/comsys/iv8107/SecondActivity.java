@@ -39,6 +39,9 @@ public class SecondActivity extends AppCompatActivity {
                 } else if (tab.getPosition() == 2) {
                     Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
                     startActivity(intent);
+                } else if (tab.getPosition() == 3) {
+                    Intent intent = new Intent(SecondActivity.this, FourthActivity.class);
+                    startActivity(intent);
                 }
             }
 

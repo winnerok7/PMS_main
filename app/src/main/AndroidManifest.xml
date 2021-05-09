@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
+        <activity android:name="ua.kpi.comsys.iv8107.FourthActivity" />
         <activity android:name="ua.kpi.comsys.iv8107.AddBook" />
         <activity android:name="ua.kpi.comsys.iv8107.InfoOfBook" />
         <activity android:name="ua.kpi.comsys.iv8107.ThirdActivity" />
